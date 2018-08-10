@@ -1,22 +1,63 @@
 {
-  "name": "csv-query",
-  "version": "0.0.4",
+  "name": "node-csv-query",
+  "version": "0.1.0",
   "description": "Turn your CSV files to queryable objects",
-  "main": "index.js",
-  "scripts": {
-    "test": "npm run mocha",
-    "mocha": "NODE_ENV=test ./node_modules/.bin/mocha --slow 200 -R spec $(find tests -name \"*.spec.js\")"
-  },
-  "author": "",
+  "author": "rdubigny",
+  "contributors": [
+    "olivierkaisin"
+  ],
   "license": "MIT",
+  "keywords": [
+    "comma",
+    "csv",
+    "data",
+    "database",
+    "db",
+    "delimited",
+    "flat file",
+    "file",
+    "filereader",
+    "parse",
+    "parser",
+    "parsing",
+    "pipe",
+    "query",
+    "storage",
+    "stream",
+    "tab",
+    "text"
+  ],
+  "repository": {
+    "url": "https://github.com/rdubigny/node-csv-query"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --require babel-polyfill --require babel-register",
+    "build": "babel src --out-dir dist",
+    "lint": "eslint src/"
+  },
   "dependencies": {
-    "bluebird": "~1.2.4",
-    "lodash": "~2.4.1",
-    "csv-parse": "0.0.3",
-    "event-stream": "~3.1.5"
+    "csv-parse": "^2.5.0",
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "chai": "~1.9.1",
-    "mocha": "~1.19.0"
-  }
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "mocha": "^5.2.0"
+  },
+  "engines": {
+    "node": ">= 8.9"
+  },
+  "main": "dist/loader.js",
+  "files": [
+    "README.md",
+    "dist/"
+  ]
 }

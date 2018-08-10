@@ -1,0 +1,6 @@
+# this dataset has comment & semi colon separator & space before separator
+id;firstName   ;lastName ;amountOfBooks
+1 ;Olivier     ;Kaisin   ;10
+2 ;Emile-Victor;Portenart;2
+3 ;Alex        ;Mapolice ;42
+4 ;Alex        ;Gaspy    ;2

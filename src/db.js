@@ -1,47 +1,25 @@
-"use strict";
+import { isObject, filter, find } from 'lodash';
 
-
-var _ = require("lodash");
-var Promise = require("bluebird");
-var engine = require("./engine");
-
-
-// Db container
-function Db()
-{
-  this.rows = [];
-}
-
-
-Db.prototype.pushRow = function (row)
-{
-  if (!_.isObject(row)) {
-    throw new Error("row must be an object");
+class Db {
+  constructor() {
+    this.rows = [];
   }
 
-  this.rows.push(row);
-};
+  pushRow(row) {
+    if (!isObject(row)) {
+      throw new Error('row must be an object');
+    }
 
+    this.rows.push(row);
+  }
 
-Db.prototype.find = function (query, options)
-{
-  var self = this;
+  find(predicate) {
+    return Promise.resolve(filter(this.rows, predicate));
+  }
 
-  return Promise.try(function () {
-    return self.rows.filter(function (row) {
-      return engine.matchRowAgainstQuery(row, query, options);
-    });
-  }); 
-};
+  findOne(predicate) {
+    return Promise.resolve(find(this.rows, predicate));
+  }
+}
 
-
-Db.prototype.findOne = function (query) 
-{
-  return this.find(query).then(function (rows) {
-    return rows.length > 0 ? rows[0] : null;
-  });
-};
-
-
-
-module.exports = Db;
+export default Db;
