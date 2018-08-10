@@ -24,7 +24,7 @@ id,firstName,lastName,amountOfBooks
 ```javascript
 'use strict';
     
-var csvdb = require("node-csv-query");
+var csvdb = require("node-csv-query").default;
 var databaseConnection = null;
 
 
@@ -48,7 +48,7 @@ databaseConnection.findOne({
 ```javascript
 databaseConnection.find({ 
   firstName: "Alex" 
-}).then(function (record) {
+}).then(function (records) {
   // Do some stuff
 })
 ```
@@ -84,7 +84,7 @@ id;firstName   ;lastName ;amountOfBooks
 ```javascript
 'use strict';
 
-var csvdb = require("node-csv-query");
+var csvdb = require("node-csv-query").default;
 
 csvdb(
   __dirname + "/dataset_custom.csv", { rtrim: true, delimiter: ';', comment: '#' }
